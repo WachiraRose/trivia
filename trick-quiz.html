@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See You Next Time</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for better appearance */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .message-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        .message {
+            font-size: 60px; /* Increased font size */
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Adding shadow effect */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Different background colors for messages */
+        .message-brown { background-color: #8a462d; } /* Brown */
+        .message-purple { background-color: #ec2bcc; } /* Purple */
+        .message-blue { background-color: #1675c4; } /* Blue */
+        .message-green { background-color: #4CAF50; } /* Green */
+        .message-yellow { background-color: #ffff00; } /* Green */
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p id="dynamic-message" class="message"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        // Array of messages with corresponding CSS classes
+        const messages = [
+            { text: "Great Job Class!", class: "message-brown" },
+            { text: "Thank you coaches and the team!", class: "message-purple" },
+            { text: "Thank you parents!", class: "message-blue" },
+            { text: "See you next time!", class: "message-yellow" },
+            { text: "God bless!", class: "message-green" }
+        ];
+
+        const messageElement = document.getElementById('dynamic-message');
+        let index = 0;
+
+        function displayMessage() {
+            const message = messages[index];
+            messageElement.textContent = message.text;
+            messageElement.className = "message " + message.class;
+            index = (index + 1) % messages.length;
+            setTimeout(hideMessage, 2000); // Hide after 2 seconds
+        }
+
+        function hideMessage() {
+            messageElement.textContent = '';
+            setTimeout(displayMessage, 1000); // Show again after 1 second
+        }
+
+        // Initial call to start the loop
+        displayMessage();
+    </script>
+</body>
+</html>
