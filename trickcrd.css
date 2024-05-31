@@ -100,3 +100,26 @@ body {
     stroke-dashoffset: 100;
     transition: 0.6s ease-out;
   }
+
+  /* Media query for small screens */
+@media (max-width: 768px) {
+  .container {
+      width: 90%;
+      left: 5%;
+  }
+  .card {
+      width: 150px;
+  }
+  .card:not(:first-child) {
+      margin-left: -30px;
+  }
+  .title {
+      left: 10px;
+  }
+  .bar {
+      left: 10px;
+  }
+  .circle {
+      left: calc(50% - 50px);
+  }
+}

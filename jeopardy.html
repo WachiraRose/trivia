@@ -23,8 +23,8 @@
       animation: scaleIn 0.5s ease-in-out;
       cursor: pointer;
       position: relative;
-      width: 200px;
-      height: 120px;
+      width: 220px; /* Increased width */
+      height: 140px; /* Increased height */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -37,6 +37,18 @@
     .card-panel:hover {
       animation: none;
       transform: scale(1.05);
+    }
+
+    .card-panel.cyan.lighten-2 {
+      background-color: #f80404 !important; /* Cyan lighten-2 */
+    }
+
+    .card-panel.yellow.lighten-2 {
+      background-color: #9c08ff !important; /* Yellow lighten-2 */
+    }
+
+    .card-title {
+      font-size: 1.5em; /* Increase font size */
     }
 
     @keyframes scaleIn {
@@ -63,63 +75,64 @@
     }
 
     nav {
-      background-color: #8d6e63 !important; /* Brown lighten-1 */
+      background-color: #e587bb !important; /* Brown lighten-1 */
     }
 
-    .card-panel.orange.lighten-2 {
-      background-color: #ffcc80 !important; /* Orange lighten-2 */
+    /* Additional styles for the Home button */
+    .nav-wrapper .right a {
+      color: white !important;
+      font-size: 1.2em; /* Slightly larger font size */
+    }
+    
+    /* Additional styles for the side nav */
+    .sidenav a {
+      color: black !important;
+      font-size: 1.2em; /* Slightly larger font size */
     }
 
-    .card-panel.green.lighten-2 {
-      background-color: #81c784 !important; /* Green lighten-2 */
-    }
-
-    .card-panel.purple.lighten-2 {
-      background-color: #ba68c8 !important; /* Purple lighten-2 */
-    }
-
-    .card-panel.blue.lighten-2 {
-      background-color: #90caf9 !important; /* Blue lighten-2 */
-    }
-
-    .card-panel.red.lighten-2 {
-      background-color: #ef9a9a !important; /* Red lighten-2 */
-    }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="nav-wrapper brown lighten-1">
-      <a href="#" class="brand-logo">WELCOME!</a>
+      <a href="#" class="brand-logo">TRIVIA NIGHT!</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#" onclick="goToHome()" class="orange-text text-darken-2">Home</a></li>
+        <li><a href="trickcrd.html" onclick="goToHome()">Home</a></li>
       </ul>
     </div>
   </nav>
 
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="#" onclick="goToHome()">Home</a></li>
+  </ul>
+
   <div class="container">
     <h1 class="center-align">JEOPARDY</h1>
-    <p class="center-align">TWO ROUNDS:</p>
+    
 
     <div class="row">
       <div class="col s12 m4">
-        <a href="https://www.playfactile.com/lvze5zu6la/play" class="card-panel orange lighten-2">
+        <a href="https://www.playfactile.com/lvze5zu6la/play" class="card-panel cyan lighten-2">
           <span class="white-text card-title">ROUND 1: CLASS WORK</span>
         </a>
       </div>
       <div class="col s12 m4">
-        <a href="https://www.playfactile.com/wordoflifeyouth/play" class="card-panel green lighten-2">
+        <a href="https://www.playfactile.com/wordoflifeyouth/play" class="card-panel yellow lighten-2">
           <span class="white-text card-title">ROUND 2: GENERAL</span>
         </a>
       </div>
-      
     </div>
-
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
     function goToHome() {
       // Redirect to the home page
       window.location.href = "index.html";
